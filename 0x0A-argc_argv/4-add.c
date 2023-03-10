@@ -12,10 +12,9 @@
 int main(int argc, char *argv[])
 {
 	int a, n;
-	int b;
 	int sum = 0;
 
-	if (argc == 0)
+	if (argc == 1)
 	{
 		printf("0\n");
 	}
@@ -23,26 +22,29 @@ int main(int argc, char *argv[])
 	for (a = 1; a < argc; a++)
 	{
 		char *number = argv[a];
+		int b;
 
-		b = 0;
-		while (number[b] != '\0')
+		for (b = 0; number[b] != '\0'; b++)
 		{
 			if (!isdigit(number[b]))
 			{
 				printf("Error\n");
 				return (1);
 			}
-			a++;
 		}
-
 		n = atoi(number);
 
 		if (n > 0)
 		{
 			sum += n;
 		}
-
+		else
+		{
+			printf("Error\n");
+			return (1);
+		}
 	}
+
 	printf("%d\n", sum);
 	return (0);
 }
